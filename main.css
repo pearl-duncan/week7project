@@ -1,0 +1,12 @@
+#search {
+    position: fixed;
+    bottom: 80%;
+    right: 40%;
+    width: 300px;
+    text-align: center;
+
+    
+}
+#search-bar{
+    padding: 5px;
+}
