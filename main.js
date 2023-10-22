@@ -1,36 +1,35 @@
-APIkey = d4d05fb9e1397fcfdac7c10828db5df9
+const APIkey = 'bfa91dc14a38ff19059d53e31f199f85'; 
+
 const getWeather = async (e) => {
     e.preventDefault();
     console.log('form submitted')
-
-    let weather = e.target.weather.value
-    if (weather == '')weather = ''
+    const weatherElement = e.target.querySelector('#location');
+    const location = weatherElement.value;
+    console.log(location)
+    console.log(e.target)
     
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}&units=imperial`
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=d4d05fb9e1397fcfdac7c10828db5df9&units=imperial`
     const res = await fetch(url)
     const data = await res.json()
     console.log(data)
 
+    console.log(e.target.location)
+    console.log(e.target.location.value)
 
-
-
-
-const container = document.getElementById('container')
-let card =`
-    <div class="card text-bg-dark">
-        <img src="https://i.ytimg.com/vi/n2ZfESR-WBs/maxresdefault.jpg" class="card-img" alt="weather background"></img>
-        <div class="card-img-overlay">
-            <h5 class="card-title">${data.city}</h5>
-            <p class="card-text">${data.forcast}</p>
-            <p class="card-text">${data.temp}</p>
-            <p class="card-text">${data.feels_like}</p>
-            <p class="card-text">${data.high}</p>
-            <p class="card-text">${data.low}</p>
-            <p class="card-text">${data.humidity}</p>
-            <p class="card-text"><small>Last updated 3 mins ago</small></p>
-        </div>
-    </div>`
-
+    const container = document.getElementById('container')
+    let card =`
+        <div class="card text-bg-dark", position= justify>
+            <div class="card">
+                <h5 class="card-title">${data.name}</h5>
+                <p class="card-text">${data.weather.main}</p>
+                <p class="card-text">${data.main.temp}</p>
+                <p class="card-text">${data.main.feels_like}</p>
+                <p class="card-text">${data.main.temp_max}</p>
+                <p class="card-text">${data.main.temp_min}</p>
+                <p class="card-text">${data.main.humidity}</p>
+            </div>
+        </div>`
     container.innerHTML = card
-
 }
+const form = document.querySelector('form')
+form.addEventListener('submit', getWeather)
