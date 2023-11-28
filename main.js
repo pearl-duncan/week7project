@@ -18,15 +18,15 @@ const getWeather = async (e) => {
 
     const container = document.getElementById('container')
     let card =`
-        <div class="card text-bg-dark", position= justify>
+        <div id="card" class="card text-bg-dark">
             <div class="card">
-                <h5 class="card-title">${data.name}</h5>
+                <h5 id="name" class="card-title"> ${data.name} </h5>
                 <p class="card-text">${data.weather.main}</p>
-                <p class="card-text">${data.main.temp}</p>
-                <p class="card-text">${data.main.feels_like}</p>
-                <p class="card-text">${data.main.temp_max}</p>
-                <p class="card-text">${data.main.temp_min}</p>
-                <p class="card-text">${data.main.humidity}</p>
+                <p class="card-text">tempurature: ${data.main.temp} degrees</p>
+                <p class="card-text">feels like: ${data.main.feels_like} degrees</p>
+                <p class="card-text">maximum temp of the day: ${data.main.temp_max} degrees</p>
+                <p class="card-text">minimum temp of the day: ${data.main.temp_min} degrees</p>
+                <p class="card-text">humidity: ${data.main.humidity}%</p>
             </div>
         </div>`
     container.innerHTML = card
